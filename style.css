@@ -1,0 +1,48 @@
+:root {
+    --void: #030b16;
+    --fuschia: #a239ca;
+    --jewel: #4714f6;
+    --stark: #e7dfdd;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+    background-color: dimgrey;
+}
+
+.main {
+    background-color: var(--void);
+    width: 260px;
+    height: 728px;
+    border-radius: 8px;
+    border-width: 4px;
+    border-style: solid;
+    border-color: lawngreen;
+}
+
+.container {
+    height: 182px;
+}
+
+.col {
+    width: 130px;
+}
+
+.row {
+    width: 260px;
+}
+
+.text {
+    display: flex;
+    flex-direction: row;
+}
+
+p {
+    color: var(--stark);
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
