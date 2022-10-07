@@ -1,9 +1,9 @@
-:root {
+/* :root {
     --void: #030b16;
     --fuschia: #a239ca;
     --jewel: #4714f6;
     --stark: #e7dfdd;
-}
+} */
 
 body {
     font-family: Helvetica, sans-serif;
@@ -11,20 +11,24 @@ body {
 }
 
 .main {
-    background-color: var(--void);
-    width: 260px;
+    background-color: black;
     height: 728px;
+    width: 260px;  
     border-radius: 8px;
     border-width: 4px;
     border-style: solid;
     border-color: lawngreen;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .container {
-    height: 182px;
+    height: 204px;
 }
 
 .col {
+    height: 116px;
     width: 130px;
 }
 
@@ -32,17 +36,19 @@ body {
     width: 260px;
 }
 
-.text {
+.word {
     display: flex;
     flex-direction: row;
+    height: 116px;
 }
 
-p {
-    color: var(--stark);
+.text {
+    color: white;
+    text-align: center;
+    font-size: 16px;
 }
 
-.center {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+.num {
+    font-size: 48px;
+    margin-top: 6px;
 }
