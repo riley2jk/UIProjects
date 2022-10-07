@@ -1,12 +1,14 @@
 <!DOCTYPE HTML>
 <html lang="en">
+<script src="main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <head>
     <meta charset="UTF-8">
     <title>Smart Water Bottle UI</title>
     <link href="style.css" rel="stylesheet">
     
 </head>
-<body>
+<body onload="getPlot()">
     <div class="main">
         <div class="row container temp"></div>
         <div class="row container word">
@@ -23,8 +25,10 @@
             </div>
         </div>
         <div class="row container level"></div>
-        <div class="row container plot"></div>
+        <div class="row container plot">
+            <div class="text" style="padding-top:25px">Weekly Consumption</div>
+            <canvas id="myPlot" style="width:100%;max-width:250px;margin-left:5px"></canvas>
+        </div>
     </div>
-    <script src="main.js"></script>
 </body>
 </html>
