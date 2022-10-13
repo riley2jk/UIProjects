@@ -1,34 +1,42 @@
 <!DOCTYPE HTML>
 <html lang="en">
-<script src="main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-<head>
-    <meta charset="UTF-8">
-    <title>Smart Water Bottle UI</title>
-    <link href="style.css" rel="stylesheet">
-    
-</head>
-<body onload="getPlot()">
-    <div class="main">
-        <div class="row container temp"></div>
-        <div class="row container word">
-            <div class="col container cons">
-                <div class="text">Water drank</div>
-                <div class="text">today:</div>
-                <div class="text num">14</div>
-                <div class="text">ounces</div>
+    <head>
+        <meta charset="UTF-8">
+        <title>Smart Water Bottle UI</title>
+        <link href="style.css" rel="stylesheet">
+        
+    </head>
+    <body onload="getPlot()">
+        <div class="main">
+            <div class="row container temp">
+                <div class="text" style="font-size: 12px">Target: 61F</div>
+                <div id="tempSlider"></div>
             </div>
-            <div class="col container goal">
-                <div class="text" style="padding: 9.2px 0">Daily Goal:</div>
-                <div class="text num">24</div>
-                <div class="text">ounces</div>
+            <div class="row container word">
+                <div class="col container cons">
+                    <div class="text">Water drank</div>
+                    <div class="text">today:</div>
+                    <div class="text num">14</div>
+                    <div class="text">ounces</div>
+                </div>
+                <div class="col container goal">
+                    <div class="text" style="padding: 9.2px 0">Daily Goal:</div>
+                    <div class="text num">24</div>
+                    <div class="text">ounces</div>
+                </div>
+            </div>
+            <div class="row container level"> 
+                <div id="levelSlider"></div>
+            </div>
+            <div class="row container plot">
+                <div class="text" style="padding-top:25px">Weekly Consumption</div>
+                <canvas id="myPlot" style="width:100%;max-width:250px;margin-left:5px"></canvas>
             </div>
         </div>
-        <div class="row container level"></div>
-        <div class="row container plot">
-            <div class="text" style="padding-top:25px">Weekly Consumption</div>
-            <canvas id="myPlot" style="width:100%;max-width:250px;margin-left:5px"></canvas>
-        </div>
-    </div>
-</body>
+    </body>
+    <script src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.js"></script>
 </html>

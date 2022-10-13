@@ -26,3 +26,61 @@ function getPlot() {
         }
     });
 }
+
+$("#tempSlider").roundSlider({
+    sliderType: "min-range",
+    editableTooltip: false,
+    circleShape: "pie",
+    startAngle: "315",
+    lineCap: "round",
+    radius: 80,
+    width: 5,
+    handleSize: "+8",
+    readOnly: true,
+
+    min: 41,
+    max: 81,
+    
+    svgMode: true,
+	  pathColor: "#eee",
+	  borderWidth: 0,
+    
+	  startValue: 0,
+    
+    valueChange: function (e) {
+    	var color = e.isInvertedRange ? "#FF5722" : "#8BC34A";
+      
+      $("#tempSlider").roundSlider({ "rangeColor": color, "tooltipColor": color });
+    }
+});
+
+$("#levelSlider").roundSlider({
+    sliderType: "min-range",
+    editableTooltip: false,
+    circleShape: "pie",
+    startAngle: "315",
+    lineCap: "round",
+    radius: 80,
+    handleSize: 0,
+    readOnly: true,
+
+    min: 0,
+    max: 24,
+    
+    svgMode: true,
+	  pathColor: "#eee",
+	  borderWidth: 0,
+    
+	  startValue: 0,
+    
+    valueChange: function (e) {
+    	var color = e.isInvertedRange ? "#FF5722" : "#8BC34A";
+      
+      $("#tempSlider").roundSlider({ "rangeColor": color, "tooltipColor": color });
+    }
+});
+
+var tempSliderObj = $("#tempSlider").data("roundSlider");
+var levelSliderObj = $("#levelSlider").data("roundSlider");
+tempSliderObj.setValue(63);
+levelSliderObj.setValue(10);
