@@ -1,5 +1,4 @@
 function getPlot() {
-    var xValues = [1,2,3,4,5,6,7];
     var yValues = [17,22,25,18,15,29,14];
         
     new Chart("myPlot", {
@@ -9,9 +8,9 @@ function getPlot() {
             datasets: [{
                 fill: true,
                 lineTension: 0,
-                backgroundColor: "rgba(0,205,255,1)",
-                borderColor: "rgba(255,255,255,1)",
-                color: "rgba(255,255,255,1)",
+                backgroundColor: "#00cdff",
+                borderColor: "#fff",
+                color: "#fff",
                 data: yValues,
                 }]
             },
@@ -25,7 +24,7 @@ function getPlot() {
             color: "rgba(255,255,255,1)"
         }
     });
-}
+};
 
 $("#tempSlider").roundSlider({
     sliderType: "min-range",
@@ -33,22 +32,33 @@ $("#tempSlider").roundSlider({
     circleShape: "pie",
     startAngle: "315",
     lineCap: "round",
-    radius: 80,
+    radius: 60,
     width: 5,
     handleSize: "+8",
     readOnly: true,
 
-    min: 41,
-    max: 81,
+    min: 51,
+    max: 71,
+
+    tooltipFormat: "tempFormat",
     
     svgMode: true,
-	  pathColor: "#eee",
-	  borderWidth: 0,
+	pathColor: "#bbb",
+	borderWidth: 0,
     
-	  startValue: 0,
+	startValue: 61,
     
     valueChange: function (e) {
-    	var color = e.isInvertedRange ? "#FF5722" : "#8BC34A";
+        var color = "";
+        if (e.value > 61) {
+            color = "#ff2a00"
+        }
+        else if (e.value < 61) {
+            color = "#00cdff"
+        }
+        else {
+            color = "#fff"
+        }
       
       $("#tempSlider").roundSlider({ "rangeColor": color, "tooltipColor": color });
     }
@@ -67,20 +77,25 @@ $("#levelSlider").roundSlider({
     min: 0,
     max: 24,
     
+    tooltipFormat: "levelFormat",
+
     svgMode: true,
-	  pathColor: "#eee",
-	  borderWidth: 0,
+	pathColor: "#eee",
+    tooltipColor: "#fff",
+	borderWidth: 0,
     
-	  startValue: 0,
-    
-    valueChange: function (e) {
-    	var color = e.isInvertedRange ? "#FF5722" : "#8BC34A";
-      
-      $("#tempSlider").roundSlider({ "rangeColor": color, "tooltipColor": color });
-    }
+	startValue: 0,
 });
+
+function tempFormat(e) {
+	return e.value + "°F"
+}
+
+function levelFormat(e) {
+	return e.value + " ounces"
+}
 
 var tempSliderObj = $("#tempSlider").data("roundSlider");
 var levelSliderObj = $("#levelSlider").data("roundSlider");
-tempSliderObj.setValue(63);
-levelSliderObj.setValue(10);
+tempSliderObj.setValue(60);
+levelSliderObj.setValue(12);

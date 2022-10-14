@@ -9,8 +9,10 @@
     <body onload="getPlot()">
         <div class="main">
             <div class="row container temp">
-                <div class="text" style="font-size: 12px">Target: 61F</div>
+                <div class="text" style="font-size: 16px;padding-top: 10px;">Target: 61°F</div>
+                <div class="arrow"></div>
                 <div id="tempSlider"></div>
+                <button class="temp-set btn">Set Target</button>
             </div>
             <div class="row container word">
                 <div class="col container cons">
@@ -26,7 +28,9 @@
                 </div>
             </div>
             <div class="row container level"> 
+                <div class="text" style="margin-top: 25px; margin-bottom: 10px">Water Level</div>
                 <div id="levelSlider"></div>
+                <button class="active-set btn">Set Active Status</button>
             </div>
             <div class="row container plot">
                 <div class="text" style="padding-top:25px">Weekly Consumption</div>
@@ -34,9 +38,9 @@
             </div>
         </div>
     </body>
-    <script src="main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.js"></script>
+    <script src="main.js"></script>
 </html>
