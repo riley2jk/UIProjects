@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Smart Water Bottle UI</title>
+        <link href="style.css" rel="stylesheet">
+        
+    </head>
+    <body onload="getPlot(), setValues()">
+        <div class="main">
+            <div class="modal" id="tmodal">
+                <div class="modal-content temp-modal">
+                    <span class="close">x</span>
+                    <div class="modal-container">
+                        <div class="modal-text" style="width: 125px">Target Temp:</div>
+                        <input type="number" min="40" max="80" step="1" class="modal-input" id="modal-target-temp"/>
+                        <div class="modal-text">°F</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="amodal">
+                <div class="modal-content active-modal">
+                    <div class="close">x</div>
+                    <div class="modal-container">
+                        <div class="modal-text" style="width: 68px">Height:</div>
+                        <input type="number" min="0" max="8" step="1" class="modal-input" id="modal-target-feet"/>
+                        <div class="modal-text" style="margin: 0 3px 0 1px">'</div>
+                        <input type="number" min="0" max="11" step="1" class="modal-input" id="modal-target-inch"/>
+                        <div class="modal-text" style="margin-left: 2px">"</div>
+                    </div>
+                    <div class="modal-container">
+                        <div class="modal-text" style="width: 125px">Days Active:</div>
+                        <input type="number" min="1" step="1" class="modal-input" id="modal-target-active"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row container temp">
+                <div class="text" id="target-num" style="font-size: 16px;padding-top: 10px;"></div>
+                <div class="arrow"></div>
+                <div id="tempSlider"></div>
+                <button class="temp-set btn" id="topen">Set Target</button>
+            </div>
+            <div class="row container word">
+                <div class="col container cons">
+                    <div class="text" style="margin-top: 6px">Water drank</div>
+                    <div class="text">today:</div>
+                    <div class="text num">14</div>
+                    <div class="text">ounces</div>
+                </div>
+                <div class="col container goal">
+                    <div class="text" style="padding: 9.2px 0; margin-top: 6px">Daily Goal:</div>
+                    <div class="text num" id="goal-num"></div>
+                    <div class="text">ounces</div>
+                </div>
+            </div>
+            <div class="row container level"> 
+                <div class="text" style="padding-top: 25px; margin-bottom: 10px">Water Level</div>
+                <div id="levelSlider"></div>
+                <button class="active-set btn" id="aopen">Set Active Status</button>
+            </div>
+            <div class="row container plot">
+                <div class="text" style="padding-top:25px">Weekly Consumption</div>
+                <canvas id="myPlot" style="width:100%;max-width:250px;margin-left:5px"></canvas>
+            </div>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.js"></script>
+    <script src="main.js"></script>
+</html>
