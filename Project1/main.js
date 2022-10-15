@@ -1,4 +1,4 @@
-let data = {level: 10, target: 61, active: 2, feet: 5, inch: 10, goal: 24, temp: 60, consum: 13};
+let data = {level: 10, target: 61, active: 2, feet: 5, inch: 10, goal: 24, temp: 60, consum: 13, YVals: [17,22,25,18,15,29,23,14], XVals: ["Mon","Tues","Wed","Thur","Fri","Sat","Sun","Cur"]};
 
 function setValues() {
     document.getElementById("modal-target-temp").value = data.target;
@@ -18,19 +18,18 @@ var tspan = document.getElementsByClassName("close")[0];
 var aspan = document.getElementsByClassName("close")[1];
 setInterval(tempChange, 5000);
 
-function getPlot() {
-    var yValues = [17,22,25,18,15,29,14];
+function getPlot(newDay) {
+    var yValues = getYVals(newDay, data.YVals);
         
     new Chart("myPlot", {
         type: "line",
         data: {
-            labels: ["Mon","Tues","Wed","Thur","Fri","Sat","Cur"],
+            labels: newDay == 0 ? getXVals(data.XVals) : data.XVals,
             datasets: [{
                 fill: true,
                 lineTension: 0,
                 backgroundColor: "#00cdff",
                 borderColor: "#fff",
-                color: "#fff",
                 data: yValues,
                 }]
             },
@@ -45,6 +44,36 @@ function getPlot() {
         }
     });
 };
+
+function getYVals(newDay, YVals) {
+    switch (newDay) {
+        case 0:
+            YVals[7] = data.consum;
+            break;
+        case 1:
+            for (let i = 0; i < 7; i++) {
+                YVals[i] = YVals[i+1];
+            }
+            YVals[7] = 0;
+            data.consum = 0;
+            break;
+        default:
+            break;
+    }
+
+    data.YVals = YVals;
+    return data.YVals;
+}
+
+function getXVals(XVals) {
+    let temp = XVals[0];
+    for (let i = 0; i < 6; i++) {
+        XVals[i] = XVals[i+1];
+    }
+    XVals[6] = temp;
+    data.XVals = XVals;
+    return data.XVals;
+}
 
 $("#tempSlider").roundSlider({
     sliderType: "min-range",
@@ -178,13 +207,16 @@ document.addEventListener("keydown", (e) => {
                 data.consum += 1;
                 levelSliderObj.setValue(data.level);
                 setValues();
+                getPlot(0);
             }
             break;
         case "f":
             data.level = 24;
             levelSliderObj.setValue(data.level);
             break;
-        case "t":
+        case "n":
+            getPlot(1);
+            setValues();
             break;
         default:
             break;
