@@ -1,4 +1,4 @@
-let data = {level: 10, target: 61, active: 2, feet: 5, inch: 10, goal: 24, temp: 60};
+let data = {level: 10, target: 61, active: 2, feet: 5, inch: 10, goal: 24, temp: 60, consum: 13};
 
 function setValues() {
     document.getElementById("modal-target-temp").value = data.target;
@@ -6,6 +6,7 @@ function setValues() {
     document.getElementById("modal-target-feet").value = data.feet;
     document.getElementById("modal-target-inch").value = data.inch;
     document.getElementById("goal-num").innerHTML = data.goal.toString();
+    document.getElementById("consum-num").innerHTML = data.consum.toString();
     document.getElementById("target-num").innerHTML = "Target: " + data.target + "°F";
 }
 
@@ -15,6 +16,7 @@ var tbtn = document.getElementById("topen");
 var abtn = document.getElementById("aopen");
 var tspan = document.getElementsByClassName("close")[0];
 var aspan = document.getElementsByClassName("close")[1];
+setInterval(tempChange, 5000);
 
 function getPlot() {
     var yValues = [17,22,25,18,15,29,14];
@@ -166,4 +168,38 @@ function resetTempSlider() {
       
     $("#tempSlider").roundSlider("option", "rangeColor", color);
     $("#tempSlider").roundSlider("option", "tooltipColor", color);
+}
+
+document.addEventListener("keydown", (e) => {
+    switch(e.key) {
+        case "d":
+            if (data.level > 0) {
+                data.level -= 1;
+                data.consum += 1;
+                levelSliderObj.setValue(data.level);
+                setValues();
+            }
+            break;
+        case "f":
+            data.level = 24;
+            levelSliderObj.setValue(data.level);
+            break;
+        case "t":
+            break;
+        default:
+            break;
+    }
+})
+
+function tempChange() {
+    if (data.temp > data.target) {
+        data.temp -= 1;
+        tempSliderObj.setValue(data.temp);
+    }
+    else if (data.temp < data.target) {
+        data.temp += 1;
+        tempSliderObj.setValue(data.temp);
+    }
+    
+    resetTempSlider();
 }
