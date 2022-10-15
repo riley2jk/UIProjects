@@ -6,7 +6,7 @@
         <link href="style.css" rel="stylesheet">
         
     </head>
-    <body onload="getPlot(), setValues()">
+    <body onload="getPlot(0), setValues()">
         <div class="main">
             <div class="modal" id="tmodal">
                 <div class="modal-content temp-modal">
@@ -29,8 +29,13 @@
                         <div class="modal-text" style="margin-left: 2px">"</div>
                     </div>
                     <div class="modal-container">
+                        <div class="modal-text" style="width: 125px">Weight:</div>
+                        <input type="number" min="50" step="1" class="modal-input" id="modal-target-weight"/>
+                        <div class="modal-text" style="margin-left: 2px">lbs</div>
+                    </div>
+                    <div class="modal-container">
                         <div class="modal-text" style="width: 125px">Days Active:</div>
-                        <input type="number" min="1" step="1" class="modal-input" id="modal-target-active"/>
+                        <input type="number" min="1" max="7" step="1" class="modal-input" id="modal-target-active"/>
                     </div>
                 </div>
             </div>
